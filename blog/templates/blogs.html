@@ -9,9 +9,9 @@
         {% for blog in blogs %}
         <div class="single-review" data-aos="fade-up" data-aos-delay="200">
             {% if blog.cover_image %}
-            <div class="review-img">
-                <img src="{{blog.cover_image.url}}" alt="" />
-            </div>
+                <div class="review-img">
+                    <img src="{{blog.cover_image.url}}" alt="" />
+                </div>
             {% endif %}
             <div class="review-content">
                 <div class="review-top-wrap">
@@ -57,7 +57,39 @@
 
 
 
-
+<form method="post" class="blog-comment-form ">
+    {% csrf_token %}
+    {% include 'includes/message.html' %}
+    {{formcomment.non_field_errors}}
+    <div class="form-inner">
+        <div class="row">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="single-form mb-lm-15px">
+            <!-- <input type="text" placeholder="Name *" /> -->
+                    {{formcomment.blog}}
+                    {{formcomment.blog.errors}}
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="single-form mb-lm-15px">
+                    <!-- <input type="text" placeholder="Name *" /> -->
+                     {{formcomment.title}}
+                     {{formcomment.title.errors}}
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="single-form mb-lm-15px">
+                    <!-- <input type="email" placeholder="Email *" /> -->
+                    {{formcomment.description}}
+                    {{formcomment.description.errors}}
+                </div>
+            </div>
+            <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
+                <button class="btn btn-primary btn-hover-dark border-0 mt-30px" type="submit">Post A Comment</button>
+            </div>
+        </div>
+    </div>
+</form>
 
 <form method="post" class="blog-comment-form">
     {% csrf_token %}
@@ -95,38 +127,8 @@
         </div>
     </div>
 </form>
-<form method="post" class="blog-comment-form">
-    {% csrf_token %}
-    {% include 'includes/message.html' %}
-    {{form.non_field_errors}}
-    <div class="form-inner">
-        <div class="row">
-            <select id="blogsveryveryown">
-            </select>
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="single-form mb-lm-15px">
-                    <!-- <input type="text" placeholder="Name *" /> -->
-                     {{formcomments.title}}
-                     {{formcomments.title.errors}}
-                </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                <div class="single-form mb-lm-15px">
-                    <!-- <input type="email" placeholder="Email *" /> -->
-                    {{formcomments.description}}
-                    {{formcomments.description.errors}}
 
-                </div>
-            </div>
-            <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
-                <button class="btn btn-primary btn-hover-dark border-0 mt-30px" type="submit">Post A Comment</button>
-            </div>
-        </div>
-    </div>
-</form>
 
-{% endblock %}
 
-{% block js %}
-    <script src="{% static 'js/blog.js' %}"></script>
+
 {% endblock %}

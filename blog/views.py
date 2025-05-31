@@ -19,7 +19,7 @@ class BlogView(CreateView):
 
         context['blogs'] = Blog.objects.all()
         context['comments'] = Comment.objects.all()
-        context['formcomments'] = formcom
+        context['formcomment'] = formcom
 
         if self.request.method == 'POST':
             formcom = CommentForm(data=self.request.POST)

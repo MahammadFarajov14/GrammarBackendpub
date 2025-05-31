@@ -13,7 +13,32 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'password'
         )
 
-class UserTokenPairSeializer(serializers.ModelSerializer):
+class UserAPIProfileSerializer(serializers.ModelSerializer):
+
+    refresh = serializers.CharField()
+    access = serializers.CharField()
+
+    class Meta:
+        model = User
+        fields = (
+            'refresh',
+            'access',
+            'id',
+            'username',
+            'password',
+        )
+
+class UserTokenRefreshSerializer(serializers.ModelSerializer):
+
+    access = serializers.CharField()
+
+    class Meta:
+        model = User
+        fields = (
+            'access',
+        )
+
+class UserTokenPairSeializer(TokenObtainPairSerializer):
 
     def validate(self, attrs):
         data = super().validate(attrs)

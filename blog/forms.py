@@ -25,7 +25,8 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = (
             'title',
-            'description'
+            'description',
+            'blog'
         )
         widgets = {
             'title': forms.TextInput(attrs= {
@@ -33,5 +34,7 @@ class CommentForm(forms.ModelForm):
             }),
             'description': forms.TextInput(attrs= {
                 'placeholder': 'Description *'
+            }),
+            'blog': forms.Select(attrs= {
             }),
         }

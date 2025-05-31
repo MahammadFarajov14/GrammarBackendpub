@@ -1,25 +1,50 @@
-from grammars.models import Rule
+from grammars.models import RuleCategory, RuleSubCategory
 from django.http import JsonResponse
-from grammars.api.serializers import RuleSerializer
+from grammars.api.serializers import RuleCategorySerializer, RuleSubCategorySerializer
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-def rules(request):
-    rules = Rule.objects.all()
-    serializer = RuleSerializer(rules, many = True)
-    # rule_dict = []
-    # for rule in rules:
-    #     rule_dict.append({
-    #         'id': rule.id,
-    #         'title': rule.title
-    #     })
+from rest_framework.permissions import IsAdminUser
+from rest_framework.filters import SearchFilter
 
-    return JsonResponse(data=serializer.data, safe=False)
+# def rules(request):
+#     rules = Rule.objects.all()
+#     serializer = RuleSerializer(rules, many = True)
+#     # rule_dict = []
+#     # for rule in rules:
+#     #     rule_dict.append({
+#     #         'id': rule.id,
+#     #         'title': rule.title
+#     #     })
 
-class RulesApiView(ListCreateAPIView):
-    serializer_class = RuleSerializer
-    queryset = Rule.objects.all()
-    permission_classes = [IsAuthenticatedOrReadOnly,]
+#     return JsonResponse(data=serializer.data, safe=False)
 
-class RuleUpdateApiView(RetrieveUpdateDestroyAPIView):
-    serializer_class = RuleSerializer
-    queryset = Rule.objects.all()
+# class RulesApiView(ListCreateAPIView):
+#     serializer_class = RuleSerializer
+#     queryset = Rule.objects.all()
+#     permission_classes = [IsAuthenticatedOrReadOnly,]
+
+# class RuleUpdateApiView(RetrieveUpdateDestroyAPIView):
+#     serializer_class = RuleSerializer
+#     queryset = Rule.objects.all()
+
+
+
+class RuleCategorysApiView(ListCreateAPIView):
+    serializer_class = RuleCategorySerializer
+    queryset = RuleCategory.objects.all()
+    permission_classes = [IsAdminUser,]
+    filter_backends = (SearchFilter,)
+    search_fields = ('subcategories__content',)
+    
+
+class RuleCategoryUpdateApiView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUser,]
+    serializer_class = RuleCategorySerializer
+    queryset = RuleCategory.objects.all()
+
+class RuleSubCategoryApiView(ListCreateAPIView):
+    serializer_class = RuleSubCategorySerializer
+    queryset = RuleSubCategory.objects.all()
+
+class RuleSubCategoryUpdateApiView(RetrieveUpdateDestroyAPIView):
+    serializer_class = RuleSubCategorySerializer
+    queryset = RuleSubCategory.objects.all()

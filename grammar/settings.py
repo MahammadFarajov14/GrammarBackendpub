@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'grammars',
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_yasg',
 
 ]
 

@@ -6,14 +6,28 @@ class RuleCategory(AbstractModel):
     title = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.title
+        return self.title    
+    
+    class Meta:
+        verbose_name_plural = 'Rule Categories'
 
-class Rule(AbstractModel):
-    category = models.ForeignKey(RuleCategory, related_name='rule', on_delete=models.CASCADE)
+class RuleSubCategory(AbstractModel):
+    category_id = models.ForeignKey(RuleCategory, related_name='subcategories', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    content = models.TextField()
 
     def __str__(self):
-        if self.category:
-            return f'{self.category} - {self.title}'
-        return self.title
+        return self.title    
+    
+    class Meta:
+        verbose_name_plural = 'Rule SubCategories'
+
+# class Rule(AbstractModel):
+#     subcategory = models.ForeignKey(RuleSubCategory, related_name='rule', on_delete=models.CASCADE)
+#     title = models.CharField(max_length=200)
+#     description = models.TextField()
+
+#     def __str__(self):
+#         if self.category:
+#             return f'{self.category} - {self.title}'
+#         return self.title
