@@ -34,6 +34,7 @@ class RuleCategorysApiView(ListCreateAPIView):
     permission_classes = [IsAdminUser,]
     filter_backends = (SearchFilter,)
     search_fields = ('subcategories__content',)
+
     
 
 class RuleCategoryUpdateApiView(RetrieveUpdateDestroyAPIView):

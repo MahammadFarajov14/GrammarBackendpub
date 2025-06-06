@@ -8,3 +8,9 @@ class AbstractModel(models.Model):
 
     class Meta:
         abstract = True
+
+class Check_up(AbstractModel):
+    file = models.FileField(upload_to='uploads/')
+    comment = models.CharField(max_length=500)
+    phone_number = models.CharField(max_length=9)
+    accept_policy = models.BooleanField(default=False)
