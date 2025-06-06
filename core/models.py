@@ -12,5 +12,8 @@ class AbstractModel(models.Model):
 class Check_up(AbstractModel):
     file = models.FileField(upload_to='uploads/')
     comment = models.CharField(max_length=500)
-    phone_number = models.CharField(max_length=9)
+    phone_number = models.CharField(max_length=13)
     accept_policy = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.comment
