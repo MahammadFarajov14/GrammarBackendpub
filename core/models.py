@@ -16,4 +16,4 @@ class Check_up(AbstractModel):
     accept_policy = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.comment
+        return self.comment 
