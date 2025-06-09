@@ -16,7 +16,19 @@ services:
     env_file:
       - .env
   
-
+  web:
+    image: grammar
+    container_name: grammar
+    build: .
+    restart: always
+    ports:
+      - "8002:8000"
+    links:
+      - 'db'
+    env_file:
+      - .env
+    depends_on:
+      - 'db'
 
   adminer:
     image: adminer
