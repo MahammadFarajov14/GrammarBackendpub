@@ -9,7 +9,7 @@ class CheckUpForm(forms.ModelForm):
             'file',
             'comment',
             'phone_number',
-            'accept_policy'
+            'accept_policy',
         )
         widgets = {
             'file': forms.FileInput(attrs={
@@ -23,5 +23,5 @@ class CheckUpForm(forms.ModelForm):
             }),
             'accept_policy' : forms.CheckboxInput(attrs={
 
-            })
+            }),
         }

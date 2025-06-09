@@ -4,6 +4,7 @@ from grammars.api.serializers import RuleCategorySerializer, RuleSubCategorySeri
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAdminUser
 from rest_framework.filters import SearchFilter
+from grammars.filters import RuleCatFilterBackend
 
 # def rules(request):
 #     rules = Rule.objects.all()
@@ -32,7 +33,7 @@ class RuleCategorysApiView(ListCreateAPIView):
     serializer_class = RuleCategorySerializer
     queryset = RuleCategory.objects.all()
     permission_classes = [IsAdminUser,]
-    filter_backends = (SearchFilter,)
+    filter_backends = (SearchFilter)
     search_fields = ('subcategories__content',)
 
     

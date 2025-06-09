@@ -56,5 +56,6 @@ urlpatterns += i18n_patterns(
     path('', include('grammars.urls')),
     path('api/', include('grammars.api.urls')),
     path('api/', include('blog.api.urls')),
+    path('api/', include('core.api.urls')),
     path('auth/', include('account.api.urls')),
 )
