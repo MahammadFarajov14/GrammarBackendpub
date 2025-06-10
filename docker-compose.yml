@@ -1,20 +1,17 @@
-# Use postgres/example user/password credentials
 version: '3.9'
 
 services:
-
-
-
 
   db:
     image: postgres
     restart: always
     ports:
-      - 5433:5432
+      - 5434:5432
     volumes: 
       - ./pgdb:/var/lib/postgresql/data
     env_file:
       - .env
+
   
   web:
     image: grammar
@@ -23,10 +20,10 @@ services:
     restart: always
     ports:
       - "8002:8000"
-    links:
-      - 'db'
     env_file:
       - .env
+    links:
+      - 'db'
     depends_on:
       - 'db'
 
@@ -34,4 +31,4 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8081:8080
+      - 8082:8080

@@ -5,10 +5,6 @@ from django.views.generic import FormView
 from core.forms import CheckUpForm
 from django.core.exceptions import ValidationError
 from core.models import Check_up
-import telegram
-from django.core.serializers.json import DjangoJSONEncoder
-from django.core.serializers import serialize
-from ipware.ip import get_client_ip
 from django.conf import settings
 import requests
 
