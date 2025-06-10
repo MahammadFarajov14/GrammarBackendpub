@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-d=fa6-#*mj!y#3e&9cekobec3%wz)j=!_i_i45eaw3l6iq51$#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 BOT_TOKEN = "8040165095:AAE5UjEQtqBoO0SRXednorabo38VXYdJeR4"
 BOT_URL = "https://api.telegram.org/bot%s/"%BOT_TOKEN
