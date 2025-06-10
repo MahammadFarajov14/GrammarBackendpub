@@ -92,7 +92,7 @@ DATABASES = {
         'USER': 'admin',
         'PASSWORD': 12345,
         'PORT': 5433,
-        'HOST': 'POSTGRES_HOST'
+        'HOST': os.environ.get('POSTGRES_HOST')
     }
 }
 
