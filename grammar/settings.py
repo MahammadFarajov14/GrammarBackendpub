@@ -87,28 +87,24 @@ WSGI_APPLICATION = 'grammar.wsgi.application'
 CSRF_TRUSTED_ORIGINS = [
     'https://grammarbackendpub-13.onrender.com'
 ]
-import os
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'grammar',
+        'USER': 'admin',
+        'PASSWORD': 12345,
+        'PORT': 5433,
+        'HOST': os.environ.get('POSTGRES_HOST'),
+    }
+}
+
 import dj_database_url
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-if DATABASE_URL:
-    DATABASES = {
+DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv("POSTGRES_HOST")
-    )    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'grammar',
-            'USER': 'admin',
-            'PASSWORD': '12345',
-            'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
-            'PORT': '5433',
-        }
-    }
-
+    )
+}
 
 
 
