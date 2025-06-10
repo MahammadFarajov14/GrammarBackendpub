@@ -87,15 +87,16 @@ WSGI_APPLICATION = 'grammar.wsgi.application'
 CSRF_TRUSTED_ORIGINS = [
     'https://grammarbackendpub-13.onrender.com'
 ]
-
+import os
 import dj_database_url
 
-POSTGRES_HOST = os.getenv("POSTGRES_HOST")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-if POSTGRES_HOST:
+if DATABASE_URL:
     DATABASES = {
-        'default': dj_database_url.config()
-    }
+    'default': dj_database_url.config(
+        default=os.getenv("POSTGRES_HOST")
+    )    }
 else:
     DATABASES = {
         'default': {
@@ -107,6 +108,8 @@ else:
             'PORT': '5433',
         }
     }
+
+
 
 
 # Password validation
