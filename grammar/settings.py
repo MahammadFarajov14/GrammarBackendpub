@@ -88,24 +88,25 @@ CSRF_TRUSTED_ORIGINS = [
     'https://grammarbackendpub-13.onrender.com'
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'grammar',
-        'USER': 'admin',
-        'PASSWORD': 12345,
-        'PORT': 5433,
-        'HOST': os.environ.get('POSTGRES_HOST'),
-    }
-}
-
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv("POSTGRES_HOST")
-    )
-}
+POSTGRES_HOST = os.getenv("POSTGRES_HOST")
+
+if POSTGRES_HOST:
+    DATABASES = {
+        'default': dj_database_url.config()
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'grammar',
+            'USER': 'admin',
+            'PASSWORD': '12345',
+            'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
+            'PORT': '5433',
+        }
+    }
 
 
 # Password validation
