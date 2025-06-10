@@ -39,7 +39,6 @@ class RuleCategorysApiView(ListCreateAPIView):
     
 
 class RuleCategoryUpdateApiView(RetrieveUpdateDestroyAPIView):
-    permission_classes = [IsAdminUser,]
     serializer_class = RuleCategorySerializer
     queryset = RuleCategory.objects.all()
 
