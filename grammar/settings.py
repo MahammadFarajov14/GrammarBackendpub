@@ -81,32 +81,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'grammar.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 CSRF_TRUSTED_ORIGINS = [
     'https://grammarbackendpub-13.onrender.com'
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'grammar',
-        'USER': 'admin',
-        'PASSWORD': 12345,
-        'PORT': 5433,
-        'HOST': os.environ.get('POSTGRES_HOST'),
-    }
-}
-
 import dj_database_url
+import os
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv("POSTGRES_HOST")
+        default=os.environ.get("DATABASE_URL"),  # not POSTGRES_HOST
+        conn_max_age=600
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
