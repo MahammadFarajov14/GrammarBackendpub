@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'grammar.wsgi.application'
 CSRF_TRUSTED_ORIGINS = [
     'https://grammarbackendpub-13.onrender.com'
 ]
-import dj_database_url
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -95,11 +95,17 @@ DATABASES = {
         'USER': 'admin',
         'PASSWORD': 12345,
         'PORT': 5433,
-        'HOST': dj_database_url.config(
-        default=os.getenv("POSTGRES_HOST"))
+        'HOST': os.environ.get('POSTGRES_HOST'),
     }
 }
 
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv("POSTGRES_HOST")
+    )
+}
 
 
 # Password validation
