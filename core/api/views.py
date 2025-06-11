@@ -2,6 +2,7 @@ from rest_framework.generics import ListCreateAPIView
 from core.models import Check_up
 from core.api.serializers import CheckUpSerializer
 from django.conf import settings
+from django.http import JsonResponse
 import requests
 
 Url = settings.BOT_URL
@@ -41,3 +42,5 @@ class CheckUpApiView(ListCreateAPIView):
                 serializer.save()
                 send_file_to_telegram(checkup.file, my_token, my_chatid)
                 requests.get(url)
+                return JsonResponse(data=serializer.data, safe=False, status=201)
+            return JsonResponse(data=serializer.errors, safe=False, status=400)
