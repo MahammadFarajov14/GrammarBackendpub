@@ -30,7 +30,7 @@ class CheckUpApiView(ListCreateAPIView):
         serializer = self.get_serializer(data=self.request.data)
         if serializer.is_valid():
             checkup = serializer.save(False)
-            message = f'comment:{checkup.comment},\n phone_number:{checkup.phone_number}'
+            message = f'comment:{checkup.comment},\nphone_number:{checkup.phone_number}'
             file = f'file:{checkup.file.file}'
             url = f'https://api.telegram.org/bot{my_token}/sendMessage?chat_id={my_chatid}&text={message}'
             Fileurl = f'https://api.telegram.org/bot{my_token}/sendDocument?chat_id={my_chatid}&document={file}'

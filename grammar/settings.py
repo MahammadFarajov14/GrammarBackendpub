@@ -66,7 +66,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'https://grammar-azi.vercel.app',
-    'localhost:5173',
+    'https://localhost:5173',
 ]
 
 ROOT_URLCONF = 'grammar.urls'
