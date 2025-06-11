@@ -27,7 +27,7 @@ class CheckUpApiView(ListCreateAPIView):
     queryset = Check_up.objects.all()
 
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer()
+        serializer = self.get_serializer(data=self.request.data)
         if serializer.is_valid():
             checkup = serializer.save(False)
             message = f'comment:{checkup.comment},\n phone_number:{checkup.phone_number}'
