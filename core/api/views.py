@@ -29,7 +29,9 @@ class CheckUpApiView(ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=self.request.data)
         if serializer.is_valid():
-            checkup = serializer.save(commit=False)
+            validated_data = serializer.validated_data
+            checkup = Checkup.objects.create(**validated_data)
+            # Optionally modify or inspect validated_data
             message = f'comment:{checkup.comment},\nphone_number:{checkup.phone_number}'
             file = f'file:{checkup.file.file}'
             url = f'https://api.telegram.org/bot{my_token}/sendMessage?chat_id={my_chatid}&text={message}'
