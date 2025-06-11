@@ -64,7 +64,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'https://localhost:5173',
+    'https://grammar-azi.vercel.app',
+]
 
 ROOT_URLCONF = 'grammar.urls'
 
