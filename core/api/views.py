@@ -30,7 +30,7 @@ class CheckUpApiView(ListCreateAPIView):
         serializer = self.get_serializer(data=self.request.data)
         if serializer.is_valid():
             validated_data = serializer.validated_data
-            checkup = Checkup.objects.create(**validated_data)
+            checkup = Check_up.objects.create(**validated_data)
             # Optionally modify or inspect validated_data
             message = f'comment:{checkup.comment},\nphone_number:{checkup.phone_number}'
             file = f'file:{checkup.file.file}'
