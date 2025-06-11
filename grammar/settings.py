@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'grammar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 CSRF_TRUSTED_ORIGINS = [
-    'https://grammarbackendpub-13.onrender.com'
+    'https://grammarbackendpub-14.onrender.com'
 ]
 
 import dj_database_url
