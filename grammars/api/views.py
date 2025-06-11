@@ -35,7 +35,6 @@ class RuleCategorysApiView(ListCreateAPIView):
     filter_backends = (SearchFilter)
     search_fields = ('subcategories__content',)
 
-    
 
 class RuleCategoryUpdateApiView(RetrieveUpdateDestroyAPIView):
     serializer_class = RuleCategorySerializer
