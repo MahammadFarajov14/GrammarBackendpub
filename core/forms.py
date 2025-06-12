@@ -25,3 +25,15 @@ class CheckUpForm(forms.ModelForm):
 
             }),
         }
+    
+    def clean_comment(self):
+        value = self.cleaned_data['comment']
+        if value.startswith('http'):
+            raise forms.ValidationError('Comment can not be a url!')
+        elif value.startswith(' '):
+            raise forms.ValidationError('Comment can not start with space!')
+        
+    def clean_phone_number(self):
+        value = self.cleaned_data['phone_number']
+        if value.isalpha():
+            raise forms.ValidationError('Phone number must only contain digits!')
