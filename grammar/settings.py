@@ -28,9 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-BOT_TOKEN = "8040165095:AAE5UjEQtqBoO0SRXednorabo38VXYdJeR4"
+BOT_TOKEN = "7000740386:AAHpAFzAWsyqnuMmhLYs_L-5-A_ySaLexq0"
 BOT_URL = "https://api.telegram.org/bot%s/"%BOT_TOKEN
-CHAT_ID = '-1002659416901'
+CHAT_ID = '-4957206808'
 # Application definition
 
 INSTALLED_APPS = [
