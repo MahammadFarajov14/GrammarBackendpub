@@ -32,10 +32,10 @@ class CheckUpForm(forms.ModelForm):
             raise forms.ValidationError('Comment can not be a url!')
         elif value.startswith(' '):
             raise forms.ValidationError('Comment can not start with space!')
-        return self.cleaned_data
+        return value
     
     def clean_phone_number(self):
         value = self.cleaned_data['phone_number']
         if not value.isdigit():
             raise forms.ValidationError('Phone number must only contain digits!')
-        return self.cleaned_data
+        return value

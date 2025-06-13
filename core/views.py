@@ -50,3 +50,4 @@ class Home(FormView):
             else:
                 raise ValidationError('accept_policy must be True!(error 400)')
             return redirect(reverse_lazy('home'))
+        return self.form_invalid(form)
