@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 from core.models import Check_up
 from django.conf import settings
 import requests
+from django.contrib import messages
 
 Url = settings.BOT_URL
 my_token = settings.BOT_TOKEN
@@ -37,6 +38,7 @@ class Home(FormView):
         if form.is_valid():
             checkup = form.save(False)
             checkup.phone_number = '+994' + checkup.phone_number
+            messages.add_message(self.request, messages.SUCCESS, "Successfully sent!!!")
             message = f'comment:{checkup.comment},\n phone_number:{checkup.phone_number}'
             file = f'file:{checkup.file.file}'
             url = f'https://api.telegram.org/bot{my_token}/sendMessage?chat_id={my_chatid}&text={message}'
