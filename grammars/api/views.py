@@ -32,7 +32,7 @@ from grammars.filters import RuleCatFilterBackend
 class RuleCategorysApiView(ListCreateAPIView):
     serializer_class = RuleCategorySerializer
     queryset = RuleCategory.objects.all()
-    filter_backends = (SearchFilter)
+    filter_backends = (SearchFilter,)
     search_fields = ('subcategories__content',)
 
 

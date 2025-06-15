@@ -7,8 +7,8 @@ class RuleSubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = RuleSubCategory
         fields = (
-            'category_id',
             'id',
+            'category_id',
             'title',
             'content',
         )
