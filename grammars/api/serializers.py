@@ -24,7 +24,6 @@ class RuleCategorySerializer(serializers.ModelSerializer):
         )
 
 
-
 # class RuleSerializer(serializers.ModelSerializer):
 
 #     category = RuleCategorySerializer()
