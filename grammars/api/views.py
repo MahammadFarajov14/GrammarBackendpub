@@ -27,8 +27,6 @@ from grammars.filters import RuleCatFilterBackend
 #     serializer_class = RuleSerializer
 #     queryset = Rule.objects.all()
 
-
-
 class RuleCategorysApiView(ListCreateAPIView):
     serializer_class = RuleCategorySerializer
     queryset = RuleCategory.objects.all()
