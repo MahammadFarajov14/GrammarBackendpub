@@ -9,10 +9,8 @@ services:
       - 5433:5432
     volumes: 
       - ../pgdb:/var/lib/postgresql/data
-    environment:
-        POSTGRES_PASSWORD : '12345'
-        POSTGRES_USER : 'admin'
-        POSTGRES_DB : 'grammar'
+    env_file:
+      ../.env
 
   adminer:
     image: adminer
